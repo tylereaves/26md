@@ -1,0 +1,29 @@
+{% extends "base.jinja" %}
+{% block title %}{{ show.date.isoformat() }} - {{ show.venue.name }}{% endblock %}
+{% block content %}
+
+  <h1><a href="/tour/{{ show.tour_id }}">{{ show.tour }}</a> - {{ show.date.isoformat() }}</h1>
+  <h2>{{ show.venue.name }}</h2>
+  <h3>{{ show.venue.city }}, {{ show.venue.state }}</h3>
+  {{ show.rendered_notes() }}
+
+  <table>
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Set</th>
+      <th>Song</th>
+      <th>Notes</th>
+    </tr>
+    </thead>
+
+    {% for song in songs %}
+      <tr>
+        <td>{{ song.order }}.</td>
+        <td>{{ song.set }}</td>
+        <td><a href="/song/{{ song.song.id }}">{{ song.song.name }}</a>{% if song.segue %} &gt; {% endif %}</td>
+        <td class="notes">{{ song.rendered_notes() }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

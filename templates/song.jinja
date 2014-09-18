@@ -1,0 +1,30 @@
+{% extends "base.jinja" %}
+{% block title %}{{ song.name }} Tour{% endblock %}
+{% block content %}
+
+  <h1>{{ song.name }}</h1>
+  <h2>{{ song.author.name }}</h2>
+  <h3>{{ song.album.name }}</h3>
+  <p>{{ song.rendered_notes() }}</p>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Tour</th>
+      <th>Date</th>
+      <th>Venue</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+
+    {% for show in shows %}
+      <tr>
+        <td><a href="/tour/{{ show.tour.id }}">{{ show.tour }}</a></td>
+        <td><a href="/show/{{ show.id }}">{{ show.date.isoformat() }}</a></td>
+        <td>{{ show.venue.name }}</td>
+        <td>{{ show.venue.city }}, {{ show.venue.state }}</td>
+
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  <h1>Song Matrix for {{ tour.name }} Tour</h1>
+  {{ tour.rendered_notes }}
+  <dl class="sub-nav">
+    <dt>Order By:</dt>
+    {% for sort in sorts %}
+      <dd
+              {% if order == sort.0 %}
+                class="active"
+              {% endif %}
+              ><a href="/tour/{{ tour.id }}?order={{ sort.0 }}">{{ sort.1 }}</a></dd>
+    {% endfor %}
+  </dl>
+  <table>
+    <thead>
+    <tr>
+      <th>Show Date<br/>
+        <small>Click date for setlist</small>
+      </th>
+      <th>Played</th>
+      {% for show in shows %}
+        <th class="centered">
+          <a href="/show/{{ show.id }}">
+            {{ show.date.year }}<br/>
+            {{ show.date.month }}/{{ show.date.day }}</a>
+        </th>
+      {% endfor %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for song in songs %}
+      <tr>
+        <td><a href="/song/{{ song.id }}">{{ song.name }}</a></td>
+        <td>{{ song.count }}</td>
+        {% for show in song.shows %}
+          <td class="cell{{ show|lower }}">{{ show }}</td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

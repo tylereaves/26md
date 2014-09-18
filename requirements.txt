@@ -1,0 +1,12 @@
+Unidecode==0.04.14
+django==1.7a2
+django-annoying==0.7.9
+django-autoslug==1.7.2
+django-debug-toolbar==1.0.1
+django-localflavor==1.0
+django-sortedm2m==0.7.0
+django-zurb-foundation==5.1.1
+psycopg2==2.5.2
+six==1.6.1
+sqlparse==0.1.11
+wsgiref==0.1.2

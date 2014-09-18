@@ -1,0 +1,63 @@
+{% extends "base.jinja" %}
+
+{% block title %}{{ tour.name }} Tour{% endblock %}
+{% block content %}
+  <h1>Song Matrix for {{ tour }} </h1>
+  {{ tour.rendered_notes() }}
+
+  <p>This view shows a grid based representation of the songs palyed each night on this tour, as well as running counts
+    of how many shows in a row each song is played.</p>
+
+  <p><strong><a href="/tour-analysis/{{ tour.id }}">New: Album-by-album analysis for this tour</a></strong></p>
+  <dl class="sub-nav">
+    <dt>Order By:</dt>
+    {% for sort in sorts %}
+      <dd
+              {% if order == sort.0 %}
+                class="active"
+              {% endif %}
+              ><a href="/tour/{{ tour.id }}?order={{ sort.0 }}">{{ sort.1 }}</a></dd>
+    {% endfor %}
+  </dl>
+  </div>
+  <div class="small-12 columns">
+    <table class="matrix">
+      <thead>
+      <tr>
+        <th>Show Date<br/>
+          <small>Click date for setlist</small>
+        </th>
+        <th>Played</th>
+        {% for show in shows %}
+          <th class="centered">
+            <a href="/show/{{ show.id }}">
+              {{ show.date.year }}<br/>
+              {{ show.date.month }}/{{ show.date.day }}</a>
+          </th>
+        {% endfor %}
+      </tr>
+      <tr>
+        <th></th>
+        <th class="align: right;">
+          <small># Songs</small>
+        </th>
+        {% for show in shows %}
+          <td class="centered">{{ show.setlistsong_set.count() }}</td>
+        {% endfor %}
+      </tr>
+
+      </thead>
+      <tbody>
+      {% for song in songs %}
+        <tr>
+          <td><a href="/song/{{ song.id }}">{{ song.name }}</a></td>
+          <td>{{ song.count }}</td>
+          {% for show in song.shows %}
+            <td class="cell{{ show|lower }}">{{ show }}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+{% endblock %}

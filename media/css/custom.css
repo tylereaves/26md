@@ -1,0 +1,113 @@
+.celldebut {
+    background-color: #66aaff;
+    font-size: 75%;
+    text-align: center;
+}
+
+.cell1x {
+    background-color: #66ffaa;
+}
+
+.cell2x {
+    background-color: #ffffaa;
+}
+
+.cell3x {
+    background-color: #ffdd88;
+}
+
+.cell4x {
+    background-color: #ffbb66;
+}
+
+.cell5x {
+    background-color: #ff9944;
+}
+
+.cell6x {
+    background-color: #ff7722;
+}
+
+.cell7x {
+    background-color: #ff5500;
+}
+
+.cell8x {
+    background-color: #ff3300;
+}
+
+.cell9x {
+    background-color: #ff1100;
+}
+
+.cell10x {
+    background-color: #ee0000;
+}
+
+.cell11x {
+    background-color: #cc0000;
+    color: #ffffff;
+}
+
+.cell12x {
+    background-color: #aa0000;
+    color: #ffffff;
+}
+
+.cell13x {
+    background-color: #990000;
+    color: #ffffff;
+}
+
+.cell14x {
+    background-color: #770000;
+    color: #ffffff;
+}
+
+.cell15x {
+    background-color: #550000;
+    color: #ffffff;
+}
+
+.cell16x {
+    background-color: #330000;
+    color: #ffffff;
+}
+
+.cell17x {
+    background-color: #110000;
+    color: #ffffff;
+}
+
+.cell18x {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.centered {
+    text-align: center;
+}
+
+.cellopener {
+    background-color: #66ffff;
+    font-size: 75%;
+    text-align: center;
+}
+
+.cellcloser {
+    background-color: #d080d0;
+    font-size: 75%;
+    text-align: center;
+}
+
+span.person {
+    font-weight: bold;
+}
+
+td p.notes {
+    margin-bottom: 0;
+}
+
+table.matrix {
+    overflow: auto;
+}

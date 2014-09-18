@@ -1,0 +1,33 @@
+{% extends "base.jinja" %}
+
+{% block title %}Recent Shows{% endblock %}
+{% block content %}
+  <h2>Please pardon our dust...</h2>
+  <p>With the recent closure of oneofthesedays.org, I've kicked my work on this site into high gear, but it's still not
+    quite where I'd like to be in terms of navigational ease. I'm working on it!</p>
+  <h1>Recent shows</h1>
+
+  <p>This view shows a list of recent shows from easy viewing. Click the show to set the setlist. Click the tour name to
+    see the song matrix for that tour</p>
+
+
+  <table>
+    <thead>
+    <tr>
+      <th>Show</th>
+      <th>Tour</th>
+    </tr>
+
+    </thead>
+    <tbody>
+    {% for show in shows %}
+      <tr>
+        <td><a href="/show/{{ show.id }}">{{ show.date }} - {{ show.venue.name }}
+          - {{ show.venue.city }}, {{ show.venue.state }} </a></td>
+        <td><a href="/tour/{{ show.tour.id }}">{{ show.tour }}</a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

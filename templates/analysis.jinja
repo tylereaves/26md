@@ -1,0 +1,31 @@
+{% extends "base.jinja" %}
+
+{% block title %}{{ tour.name }} Tour Analysis{% endblock %}
+{% block content %}
+  <h1>Analysis for <a href="/tour/{{ tour.id }}">{{ tour }}</a></h1>
+  <table>
+
+    <tbody>
+    {% for album in data %}
+      <tr>
+        <td colspan="4"><h3>{{ album[0] }}</h3></td>
+      </tr>
+      <tr>
+        <th>Song</th>
+        <th>Played</th>
+        <th>Opener</th>
+        <th>Closer</th>
+      </tr>
+      {% for song in album[1] %}
+
+        <tr>
+          <td><a href="/song/{{ song[4] }}">{{ song[0] }}</a></td>
+          <td class="cell{{ song[1] }}x">{{ song[1] }}</td>
+          <td class="cell{{ song[1] }}x">{{ song[2] }}</td>
+          <td class="cell{{ song[1] }}x">{{ song[3] }}</td>
+        </tr>
+      {% endfor %}
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

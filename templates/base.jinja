@@ -1,0 +1,123 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  {% block meta %}{% endblock meta %}
+  {% block base_title %}
+    <title>{% block title %} Home{% endblock title %} :: 26miledrive.com - Drive-By Truckers Tour Data</title>
+  {% endblock base_title %}
+
+  {# Base Foundation CSS #}
+  <link rel="stylesheet" href="/static/foundation/css/normalize.css"/>
+  <link rel="stylesheet" href="/static/foundation/css/foundation.min.css"/>
+
+
+  {# Custom CSS #}
+  <link rel="stylesheet" type="text/css" href="/media/css/custom.css?ver=8"/>
+
+  {# Override if you need another version of modernizr #}
+  <script src="/static/foundation/js/vendor/modernizr.js"></script>
+
+
+  {# Custom head JS #}
+  {% block head_js %}{% endblock head_js %}
+</head>
+<body {% block body_attr %}{% endblock body_attr %}>
+{# Main content goes here #}
+
+
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="/">26miledrive.com</a></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+  </ul>
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li><a href="mailto:tylere@gmail.com">Contact Tyler (Site Admin)</a></li>
+    </ul>
+    <ul class="left">
+      <li class="has-dropdown">
+        <a href="#">Tours</a>
+        <ul class="dropdown">
+          {% for mt in tours %}
+            <li class="has-dropdown not-click"><a href="#">{{ mt.name }}</a>
+              <ul class="dropdown">
+                {% for leg in mt['legs'] %}
+                  <li><a href="/tour/{{ leg['id'] }}">{{ leg['name'] }}</a></li>
+                {% endfor %}
+              </ul>
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
+      <li class="has-dropdown">
+        <a href="#">Albums &amp; Songs</a>
+        <ul class="dropdown">
+          {% for album in albums %}
+            <li class="has-dropdown not-click"><a href="#">{{ album.name }}</a>
+              <ul class="dropdown">
+                {% for song in album['songs'] %}
+                  <li><a href="/song/{{ song['id'] }}">{{ song['name'] }}</a></li>
+                {% endfor %}
+              </ul>
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+</nav>
+
+<section role="main">
+  <div class="row">
+    <div class="small-12 columns">
+      {% block content %}
+        This is a default body
+      {% endblock %}
+    </div>
+  </div>
+</section>
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-49185903-1', '26miledrive.com');
+  ga('send', 'pageview');
+
+</script>
+
+{# Override if you need another version of jQuery #}
+
+
+<script src="/static/foundation/js/vendor/jquery.js"></script>
+
+
+<script src="/static/foundation/js/foundation.min.js"></script>
+
+
+{# Custom JS #}
+{% block body_js %}{% endblock body_js %}
+
+{# Init Foundation #}
+{% block foundation_js_init %}
+  <script>
+    $(document).foundation();
+  </script>
+{% endblock foundation_js_init %}
+</body>
+</html>
+
